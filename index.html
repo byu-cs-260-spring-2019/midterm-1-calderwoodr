@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Faux Good Book</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div id="app">
+        <h2>This is a goodbook thing. I spent most of my time on a website breaking bug that suddenly went away for no reason. So this is very ugly. The favorites are at the bottom.</h2>
+       
+
+        
+
+    
+        <div v-if="loading">
+            <p>Loading...</p>
+        </div>
+        <div v-else>
+            <p>
+                <form>
+                    <label style="margin-left: 1rem;">Search</label>
+                    <input v-model="search_term" id="search_box" type="text" placeholder="Search for a book">
+                    <button v-on:click="getBook">Search</button>
+                </form>
+            </p>
+
+            <p>Results found: {{ num_found }}</p>
+            <ul id="resulty">
+                <li v-for="book in books">
+                    <div class="search_result">
+                        <h4> {{ book.title }} </h4>
+                        <h5>Author: {{ book.author_name }} </h5>
+                        <p>First printed: {{ book.first_publish_year }}</p>
+                        <p>Publishers : {{ book.publisher }} </p>
+                        
+                        
+                        
+                         <form>
+                             <button type="button" v-on:click=addFavorite(book.title)>Add to Favorites</button>
+                             <button type="button" v-on:click="removeFavorite(book.title)">Remove from Favorites</button>
+                         </form>
+
+
+                        
+                    </div>
+                    
+                </li>
+
+            </ul>
+
+            
+
+
+            <ul id="favy">
+                <p> Favorites:</p>
+                <p> {{ print_fav }} </p>
+            </ul>
+
+        </div>
+    
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
+
+</body>
+</html>
