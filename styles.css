@@ -1,9 +1,10 @@
-#favy {
+/* #favy {
     display: inline-block;
-    
+    float: left;
 }
 
-#resulty {
+.search_result {
     display: inline-block;
-    width: 50%;
-}
+    float: left;
+    width: 60%;
+} */
